@@ -5,7 +5,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import squash.autom.projet_squash.HomePage;
+
 
 public class AjouterPasDeTest {
 	
@@ -13,32 +16,39 @@ public class AjouterPasDeTest {
 	
 	@Before
 	public void before() throws InterruptedException {
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\formation\\Desktop\\SUT\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\formation\\Desktop\\SUT\\chromedriver.exe");
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		// Attention : mettre l'adresse de squash TM
 		driver.get("http://192.168.102.93:9876/squash/login");
-		Thread.sleep(5000);
 	}
 	
 	@After
 	public void after() {
-		driver.close();	
 		driver.quit();
 	}
 	
+	//Thread.sleep(3000);
 	@Test
 	public void AjouterPasdeTest() throws InterruptedException {
 		// Pré-requis : créer un cas de test
 		
 		// Etape de connexion
 		System.out.println("Début du test");
-		LoginPage loginPage = new LoginPage(driver);
-		System.out.println("login");
+		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 		loginPage.login();
-		HomePage homepage = new HomePage(driver);
-		
+		HomePage homepage =  PageFactory.initElements(driver, HomePage.class);
+		homepage.goCasdeTest();
 		// 1 : Sélection cas de test | contrôler surbrillance
+		CasTestPage testpage = PageFactory.initElements(driver, CasTestPage.class);
+		testpage.selectProject();
+		CasTestDashbordInitPage dashbordinit = PageFactory.initElements(driver, CasTestDashbordInitPage.class);
+		dashbordinit.initDashbord();
+		CasTestDashbordPage dashbord = PageFactory.initElements(driver, CasTestDashbordPage.class);
+		dashbord.goCasTest();
+		ListeCasTestPage listCT = PageFactory.initElements(driver, ListeCasTestPage.class);
+		listCT.openTreeCT();
+		Thread.sleep(3000);
 		
 		// 2 : Ajouter un pas de test | Action/Résultat attendu / bt Ajouter un autre Ajouter / Fermer
 		

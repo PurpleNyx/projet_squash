@@ -1,31 +1,37 @@
 package squash.autom.projet_squash;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class LoginPage {	
 	
-	public WebDriver driverLogin;
+	// Constructeur 
+	private WebDriver driver;
 	
 	public LoginPage(WebDriver driver) {
-		super();
-		this.driverLogin = driver;
+		this.driver = driver;
 	}
 	
 	// Initialisation des éléments de la page
-	WebElement champUser = driverLogin.findElement(By.xpath("//*[@id=\"username\"]"));
-	WebElement champPassword = driverLogin.findElement(By.xpath("//*[@id=\"password\"]"));
-	WebElement btConnexion = driverLogin.findElement(By.xpath("//*[@id=\"login-form-button-set\"]/input"));
+	@FindBy(id = "username")
+	private WebElement champUser;
 	
+	@FindBy(id = "password")
+	private WebElement champPassword;
 	
+	@FindBy(id = "login-form-button-set")
+	private WebElement btConnexion;
 	
 	
 	// Méthode de connexion à l'application
-	public void login() {
+	public HomePage login() throws InterruptedException {
 		champUser.sendKeys("admin");
 		champPassword.sendKeys("admin");
-		btConnexion.click();		
+		btConnexion.click();
+		Thread.sleep(2000);
+		return PageFactory.initElements(driver, HomePage.class);
 	}
 }
 

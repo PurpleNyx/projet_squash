@@ -18,6 +18,7 @@ public class CreationCasDeTest {
 		driver.manage().window().maximize();
 		// Attention : mettre l'adresse de squash TM
 		driver.get("http://192.168.102.93:9876/squash/login");
+		Thread.sleep(15000);
 	}
 	
 	@After

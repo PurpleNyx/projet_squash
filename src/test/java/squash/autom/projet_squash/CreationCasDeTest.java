@@ -35,11 +35,11 @@ public class CreationCasDeTest {
 		System.out.println("Début du test");
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 		loginPage.login();
-		HomePage homepage =  PageFactory.initElements(driver, HomePage.class);
+		/*HomePage homepage =  PageFactory.initElements(driver, HomePage.class);
 		homepage.goCasdeTest();
 		// 1 : Sélection cas de test | contrôler surbrillance
 		CasTestPage testpage = PageFactory.initElements(driver, CasTestPage.class);
-		testpage.createTest();
+		testpage.createTest();*/
 		
 		
 

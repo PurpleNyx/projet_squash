@@ -38,7 +38,7 @@ public class AjouterPasDeTest {
 		System.out.println("Début du test");
 		LoginPage loginPage = PageFactory.initElements(driver, LoginPage.class);
 		loginPage.login();
-		HomePage homepage =  PageFactory.initElements(driver, HomePage.class);
+		/*HomePage homepage =  PageFactory.initElements(driver, HomePage.class);
 		homepage.goCasdeTest();
 		// 1 : Sélection cas de test | contrôler surbrillance
 		CasTestPage testpage = PageFactory.initElements(driver, CasTestPage.class);
@@ -49,7 +49,7 @@ public class AjouterPasDeTest {
 		dashbord.goCasTest();
 		ListeCasTestPage listCT = PageFactory.initElements(driver, ListeCasTestPage.class);
 		listCT.openTreeCT();
-		Thread.sleep(3000);
+		Thread.sleep(3000);*/
 		
 		// 2 : Ajouter un pas de test | Action/Résultat attendu / bt Ajouter un autre Ajouter / Fermer
 		
